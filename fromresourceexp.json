@@ -1,0 +1,180 @@
+{
+  "value": [
+    {
+      "instanceId": "0",
+      "sku": {
+        "name": "Standard_A4",
+        "tier": "Standard"
+      },
+      "properties": {
+        "latestModelApplied": true,
+        "vmId": "16190d11-9733-41d9-aa3d-06d6b5450d4e",
+        "storageProfile": {
+          "imageReference": {
+            "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/sql1/providers/Microsoft.Compute/images/syspreped"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "mvmsszzsv_mvmsszzsv_0_disk1_9628a45f969446bea0558928d9736e2c",
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "Standard_LRS",
+              "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/sql1/providers/Microsoft.Compute/disks/mvmsszzsv_mvmsszzsv_0_disk1_9628a45f969446bea0558928d9736e2c"
+            },
+            "diskSizeGB": 128
+          },
+          "dataDisks": [
+            {
+              "lun": 3,
+              "name": "mvmsszzsv_mvmsszzsv_0_disk2_ff9408ee90724db0b185dcff855525a7",
+              "createOption": "Empty",
+              "caching": "None",
+              "managedDisk": {
+                "storageAccountType": "Standard_LRS",
+                "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/sql1/providers/Microsoft.Compute/disks/mvmsszzsv_mvmsszzsv_0_disk2_ff9408ee90724db0b185dcff855525a7"
+              },
+              "diskSizeGB": 50
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "mvmsszzsv000000",
+          "adminUsername": "dinor",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/sql1/providers/Microsoft.Compute/virtualMachineScaleSets/mvmsszzsv/virtualMachines/0/networkInterfaces/mvmsszzsvnic"
+            }
+          ]
+        },
+        "provisioningState": "Succeeded"
+      },
+      "resources": [
+        {
+          "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "2.9",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+              "configuration": {
+                "url": "https://007pqzkn75ztrjmagntpri0.blob.core.windows.net/script/MoveAzureTempDrive/Scripts/MoveAzureTempDrive.ps1.zip",
+                "wmfVersion": "latest",
+                "script": "MoveAzureTempDrive.ps1",
+                "Function": "MoveAzureTempDrive"
+              },
+              "configurationArguments": {
+                "TempDriveLetter": "Z"
+              }
+            },
+            "forceUpdateTag": "[parameters('changediskUpdateTagVersion')]",
+            "provisioningState": "Succeeded"
+          },
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "northeurope",
+          "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/SQL1/providers/Microsoft.Compute/virtualMachines/mvmsszzsv_0/extensions/Microsoft.Powershell.DSC",
+          "name": "Microsoft.Powershell.DSC"
+        }
+      ],
+      "type": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+      "location": "northeurope",
+      "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/SQL1/providers/Microsoft.Compute/virtualMachineScaleSets/mvmsszzsv/virtualMachines/0",
+      "name": "mvmsszzsv_0"
+    },
+    {
+      "instanceId": "1",
+      "sku": {
+        "name": "Standard_A4",
+        "tier": "Standard"
+      },
+      "properties": {
+        "latestModelApplied": true,
+        "vmId": "a382ca16-1860-42fc-9620-c6f85f0cbf41",
+        "storageProfile": {
+          "imageReference": {
+            "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/sql1/providers/Microsoft.Compute/images/syspreped"
+          },
+          "osDisk": {
+            "osType": "Windows",
+            "name": "mvmsszzsv_mvmsszzsv_1_disk1_b2a8074374c04147882502debc9a7202",
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "Standard_LRS",
+              "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/sql1/providers/Microsoft.Compute/disks/mvmsszzsv_mvmsszzsv_1_disk1_b2a8074374c04147882502debc9a7202"
+            },
+            "diskSizeGB": 128
+          },
+          "dataDisks": [
+            {
+              "lun": 3,
+              "name": "mvmsszzsv_mvmsszzsv_1_disk2_31363739445c468a848a1f89052cf8c2",
+              "createOption": "Empty",
+              "caching": "None",
+              "managedDisk": {
+                "storageAccountType": "Standard_LRS",
+                "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/sql1/providers/Microsoft.Compute/disks/mvmsszzsv_mvmsszzsv_1_disk2_31363739445c468a848a1f89052cf8c2"
+              },
+              "diskSizeGB": 50
+            }
+          ]
+        },
+        "osProfile": {
+          "computerName": "mvmsszzsv000001",
+          "adminUsername": "dinor",
+          "windowsConfiguration": {
+            "provisionVMAgent": true,
+            "enableAutomaticUpdates": true
+          },
+          "secrets": []
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/sql1/providers/Microsoft.Compute/virtualMachineScaleSets/mvmsszzsv/virtualMachines/1/networkInterfaces/mvmsszzsvnic"
+            }
+          ]
+        },
+        "provisioningState": "Updating"
+      },
+      "resources": [
+        {
+          "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "2.9",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+              "configuration": {
+                "url": "https://007pqzkn75ztrjmagntpri0.blob.core.windows.net/script/MoveAzureTempDrive/Scripts/MoveAzureTempDrive.ps1.zip",
+                "wmfVersion": "latest",
+                "script": "MoveAzureTempDrive.ps1",
+                "Function": "MoveAzureTempDrive"
+              },
+              "configurationArguments": {
+                "TempDriveLetter": "Z"
+              }
+            },
+            "forceUpdateTag": "[parameters('changediskUpdateTagVersion')]",
+            "provisioningState": "Updating"
+          },
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "northeurope",
+          "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/SQL1/providers/Microsoft.Compute/virtualMachines/mvmsszzsv_1/extensions/Microsoft.Powershell.DSC",
+          "name": "Microsoft.Powershell.DSC"
+        }
+      ],
+      "type": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+      "location": "northeurope",
+      "id": "/subscriptions/928f4e7e-2c28-4063-a56e-6f1e6f2bb73c/resourceGroups/SQL1/providers/Microsoft.Compute/virtualMachineScaleSets/mvmsszzsv/virtualMachines/1",
+      "name": "mvmsszzsv_1"
+    }
+  ]
+}
