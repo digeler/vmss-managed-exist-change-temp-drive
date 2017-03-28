@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -46,7 +46,26 @@
       ],
       "type": "String",
         "defaultValue": "Windows"
-    }
+    },
+      "_artifactsLocation": {
+          "type": "string",
+          "metadata": {
+              "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
+          }
+      },
+      "_artifactsLocationSasToken": {
+          "type": "securestring",
+          "metadata": {
+              "description": "Auto-generated token to access _artifactsLocation"
+          }
+      },
+      "changediskUpdateTagVersion": {
+          "type": "string",
+          "defaultValue": "1.0",
+          "metadata": {
+              "description": "This value must be changed from a previous deployment to ensure the extension will run"
+          }
+      }
   },
   "variables": {
     "namingInfix": "[toLower(substring(concat(parameters('vmssName'), uniqueString(resourceGroup().id)), 0, 9))]",
@@ -71,7 +90,9 @@
     "computeApiVersion": "2016-04-30-preview",
     "networkApiVersion": "2016-03-30",
       "custScriptFolder": "CustomScripts",
-      "custScriptFileName": "cust.ps1"
+      "custScriptFileName": "cust.ps1",
+      "changediskArchiveFolder": "DSC",
+      "changediskArchiveFileName": "changedisk.zip"
   },
   "resources": [
     {
@@ -182,25 +203,31 @@
               }
             ]
           },
-            "extensionProfile": {
-                "extensions": [
-                    {
-                        "name": "cust",
-                        "properties": {
-                            "publisher": "Microsoft.Compute",
-                            "type": "CustomScriptExtension",
-                            "typeHandlerVersion": "1.4",
-                            "autoUpgradeMinorVersion": true,
-                          "settings": {
-                            "fileUris": [
-                              "https://007pqzkn75ztrjmagntpri0.blob.core.windows.net/script/sc.ps1"
-                            ],
-                            "commandToExecute": "powershell -executionpolicy unrestricted -file sc.ps1"
-                          }
-                        }
+          "extensionProfile": {
+            "extensions": [
+              {
+                "properties": {
+                  "publisher": "Microsoft.Powershell",
+                  "type": "DSC",
+                  "typeHandlerVersion": "2.9",
+                  "autoUpgradeMinorVersion": true,
+                  "settings": {
+                    "configuration": {
+                      "url": "https://007pqzkn75ztrjmagntpri0.blob.core.windows.net/script/MoveAzureTempDrive/Scripts/MoveAzureTempDrive.ps1.zip",
+                      "wmfVersion": "latest",
+                      "script": "MoveAzureTempDrive.ps1",
+                      "Function": "MoveAzureTempDrive"
+                    },
+                    "configurationArguments": {
+                      "TempDriveLetter": "Z"
                     }
-                ]
-            }
+                  },
+                  "forceUpdateTag": "[parameters('changediskUpdateTagVersion')]"
+                },
+                "name": "Microsoft.Powershell.DSC"
+              }
+            ]
+          }
         }
       },
       "dependsOn": [
